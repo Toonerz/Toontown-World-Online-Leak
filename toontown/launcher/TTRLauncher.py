@@ -28,27 +28,10 @@ class TTRLauncher(LauncherBase):
 	def __init__(self):
 		username = self.getPlayToken()
 		password = self.getPassword()
-		passwordencode = urllib.quote_plus(password)
-		print passwordencode
-		headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-		print ("Sending username/password to server...")
-		connection = httplib.HTTPConnection("www.toontownworldonline.com")
-		connection.request("GET", "/api/login/login.php?username="+ username + "&password=" + passwordencode)
-		response = connection.getresponse()
+		
+                #connection = httplib.HTTPConnection("127.0.0.1")
+		print("Success! Starting the game...")
 
-		data = response.read()
-		# turn json into pythonic format
-		formattedData = json.loads(data)
-		if formattedData.get("success") == True:
-			# we now have a login, we can log in now.
-			print("Success! Starting the game...")
-			connection.close()
-		else:
-			# can't log in, probably because of invalid password
-			print("Unable to log into the game. Reason: " + formattedData.get("reason", {}))
-			connection.close()
-			sys.exit()
-			
 		self.http = HTTPClient()
 
 		self.logPrefix = 'ttw-'

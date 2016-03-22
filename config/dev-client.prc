@@ -41,7 +41,7 @@ undecorated #f
 
 
 # Game server address and authentication address
-game-server 93.104.212.215
+game-server 127.0.0.1
 server-port 7198
 # account-server localhost
 
